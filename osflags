@@ -48,5 +48,25 @@ dev)
         ;;
     esac
     ;;
+install-bin)
+    case $OS in
+        LINUX)
+            echo 'sudo install -v -s hans /usr/local/sbin'
+        ;;
+        *)
+            echo $FLAGS
+        ;;
+    esac
+    ;;
+install-etc)
+    case $OS in
+        LINUX)
+            echo 'sudo install -v etc/init/* /etc/init;sudo install -v -m 600 etc/hans.conf /etc/hans.conf.example'
+        ;;
+        *)
+            echo $FLAGS
+        ;;
+    esac
+    ;;
 esac
 

@@ -1,6 +1,8 @@
 LDFLAGS = `sh osflags ld $(MODE)`
 CFLAGS = -c -g `sh osflags c $(MODE)`
 TUN_DEV_FILE = `sh osflags dev $(MODE)`
+INSTALL_BIN = `sh osflags install-bin $(MODE)`
+INSTALL_ETC = `sh osflags install-etc $(MODE)`
 GCC = gcc
 GPP = g++
 
@@ -59,3 +61,7 @@ clean:
 
 build/tunemu.o: src/tunemu.h src/tunemu.c
 	$(GCC) -c src/tunemu.c -o build/tunemu.o
+
+install: all
+	sh -c "$(INSTALL_BIN)"
+	sh -c "$(INSTALL_ETC)"
